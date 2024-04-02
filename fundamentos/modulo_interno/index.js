@@ -1,3 +1,9 @@
-import { soma } from "./meu_modulo";
+const meuModulo = require('./meu_modulo')
 
-soma(4,5)
+
+const soma = meuModulo.soma
+
+soma(5,4)
+soma(10,10)
+
+
