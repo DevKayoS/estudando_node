@@ -5,8 +5,6 @@ const app = express() // criando uma variavel para inicar o express
 const port = 3333 //configurando uma porta para o server rodar
 
 const basePath = path.join(__dirname, 'template') //configurando o path para ele abrir no diretório TEMPLATE
-
-
 //entrando na rota de usuários
 app.get('/users/:id', (req, res)=>{ //estou declarando pela url meus parametros
   const id = req.params.id //pegando na url o id utilizando os parametros da requisição
