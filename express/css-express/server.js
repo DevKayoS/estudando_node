@@ -16,6 +16,10 @@ app.use(
 )
 app.use(express.json()) //configurando um middleware que faz com que o express consiga interpretar dados que vem por meio de .json
 
+// arquivos estáticos
+app.use(express.static('public'))
+
+
 app.use('/users', users) //configurando um middleware que lê as rotas configuradas do "users" que foi configurado na linha 7
 
 //fazendo a primeira rota 
