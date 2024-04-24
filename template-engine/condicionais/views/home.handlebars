@@ -1,0 +1,7 @@
+<h1>Bem vindo, Sr.{{user.name}}</h1>
+<p>O {{user.name}} tem {{user.age}} anos? Nossa nem parece</p>
+{{#if auth}}
+  <p>
+    Você está autenticado, <a href="/dashboard">clique aqui</a> para acessar a área de membros
+  </p>
+{{/if}}
