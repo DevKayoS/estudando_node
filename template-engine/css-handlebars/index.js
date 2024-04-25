@@ -13,6 +13,9 @@ const hbs = exphbs.create({
 app.engine('handlebars', hbs.engine) //configurando a engine que o o app deve ler
 app.set('view engine', 'handlebars') // setando que tipo de view o app deve entender
 
+// configurando para receber css
+app.use(express.static('public'))
+
 //enviando o usuário para a dashboard
 app.get('/dashboard', (req, res)=>{
 
