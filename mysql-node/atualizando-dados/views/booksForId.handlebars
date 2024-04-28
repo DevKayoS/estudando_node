@@ -1,0 +1,13 @@
+<div id="book-page">
+  <a href="/books">Voltar</a>
+  <div class="container">
+  {{#with booksForId}}
+    <h1>{{title}}</h1>
+    <p>Este Livro tem {{pagesqty}} páginas.</p>
+    <div class="actions">
+      <a href="/books/edit/{{id}}">Editar</a>
+    </div>
+  {{/with}}
+  </div>
+</div>
+

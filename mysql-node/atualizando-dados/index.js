@@ -56,7 +56,34 @@ app.get('/books', (req,res)=>{
 //resgatando dados especificos
 app.get('/books/:id', (req, res)=>{
   const id = req.params.id
-  const sql = `SELECT `
+  const sql = `SELECT * FROM books WHERE id = ${id}`
+
+  conn.query(sql, function(err,data){
+    if(err){
+      console.log(err)
+      return
+    }
+
+    const booksForId = data[0]
+
+    console.log(booksForId)
+    res.render('booksForId', {booksForId})
+  })
+})
+// atualizando dados
+app.get('/books/edit/:id', (req,res)=>{
+  const id = req.params.id
+  const sql = `SELECT * FROM books WHERE id = ${id}`
+
+  conn.query(sql, function(err, data){
+    if(err){
+      console.log(err)
+      return
+    }
+    const editBook = data[0]
+
+    res.render('editbook', {editBook})
+  })
 })
 
 // criando a conexão com o banco de dados
