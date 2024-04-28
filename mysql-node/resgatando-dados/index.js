@@ -22,21 +22,37 @@ app.get('/', (req, res)=>{
 })
 //inserindo dados no banco de dados 
 app.post('/books/insertbook', (req,res)=>{
-  
+
   const title = req.body.title
   const pagesqty = req.body.pagesqty
-  
+
   const sql = `INSERT INTO books (title, pagesqty) VALUES ('${title}', '${pagesqty}')`
-  
+
   conn.query(sql, function(err){
+    if(err){
+      console.log(err)
+    }
+    res.redirect('/books')
+  })
+
+})
+
+app.get('/books', (req,res)=>{
+  const sql = "SELECT * FROM books"
+  
+  conn.query(sql, function(err, data){
     if(err){
       console.log(err)
       return
     }
-    res.redirect('/')
-  })
+    
+    const books = data
 
+    res.render('books', {books})
+    
+  })
 })
+
 // criando a conexão com o banco de dados
 const conn = mysql.createConnection({
   host: 'localhost',
@@ -44,7 +60,6 @@ const conn = mysql.createConnection({
   password:  '',
   database: 'nodemysql'
 })
-
 //conectando de fato no banco de dados
 conn.connect(function(err){
   if(err){
