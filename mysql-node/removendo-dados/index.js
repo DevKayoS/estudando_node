@@ -101,6 +101,19 @@ app.post("/books/updatedBook", (req,res)=>{
 
 })
 
+app.post('/books/deletedBook/:id', (req,res)=>{
+  const id = req.params.id
+  const sql = `DELETE FROM books WHERE id = ${id}`
+
+  conn.query(sql, function(err){
+    if(err){
+      console.log(err)
+    }
+
+    res.redirect('/books')
+  })
+})
+
 // criando a conexão com o banco de dados
 const conn = mysql.createConnection({
   host: 'localhost',
