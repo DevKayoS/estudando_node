@@ -66,7 +66,6 @@ app.get('/books/:id', (req, res)=>{
 
     const booksForId = data[0]
 
-    console.log(booksForId)
     res.render('booksForId', {booksForId})
   })
 })
@@ -84,6 +83,22 @@ app.get('/books/edit/:id', (req,res)=>{
 
     res.render('editbook', {editBook})
   })
+})
+//atualizando p livro
+app.post("/books/updatedBook", (req,res)=>{
+  const id =  req.body.id
+  const title = req.body.title
+  const pagesqty = req.body.pagesqty
+
+  const sql = `UPDATE books SET title = "${title}", pagesqty = "${pagesqty}" WHERE id = ${id}`
+
+  conn.query(sql, function(err){
+    if(err){
+      console.log(err)
+    }
+    res.redirect('/books')
+  })
+
 })
 
 // criando a conexão com o banco de dados
