@@ -1,6 +1,6 @@
 const express  = require('express')
 const exphbs = require('express-handlebars')
-const mysql = require('mysql')
+const pool = require('./db/conn')
 
 const app = express()
 
@@ -28,7 +28,7 @@ app.post('/books/insertbook', (req,res)=>{
 
   const sql = `INSERT INTO books (title, pagesqty) VALUES ('${title}', '${pagesqty}')`
 
-  conn.query(sql, function(err){
+  pool.query(sql, function(err){
     if(err){
       console.log(err)
     }
@@ -41,7 +41,7 @@ app.get('/books', (req,res)=>{
   //comando sql para visualizar os livros da tabela books
   const sql = "SELECT * FROM books"
   
-  conn.query(sql, function(err, data){
+  pool.query(sql, function(err, data){
     if(err){
       console.log(err)
       return
@@ -58,7 +58,7 @@ app.get('/books/:id', (req, res)=>{
   const id = req.params.id
   const sql = `SELECT * FROM books WHERE id = ${id}`
 
-  conn.query(sql, function(err,data){
+  pool.query(sql, function(err,data){
     if(err){
       console.log(err)
       return
@@ -74,7 +74,7 @@ app.get('/books/edit/:id', (req,res)=>{
   const id = req.params.id
   const sql = `SELECT * FROM books WHERE id = ${id}`
 
-  conn.query(sql, function(err, data){
+  pool.query(sql, function(err, data){
     if(err){
       console.log(err)
       return
@@ -92,7 +92,7 @@ app.post("/books/updatedBook", (req,res)=>{
 
   const sql = `UPDATE books SET title = "${title}", pagesqty = "${pagesqty}" WHERE id = ${id}`
 
-  conn.query(sql, function(err){
+  pool.query(sql, function(err){
     if(err){
       console.log(err)
     }
@@ -105,7 +105,7 @@ app.post('/books/deletedBook/:id', (req,res)=>{
   const id = req.params.id
   const sql = `DELETE FROM books WHERE id = ${id}`
 
-  conn.query(sql, function(err){
+  pool.query(sql, function(err){
     if(err){
       console.log(err)
     }
@@ -114,22 +114,7 @@ app.post('/books/deletedBook/:id', (req,res)=>{
   })
 })
 
-// criando a conexão com o banco de dados
-const conn = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password:  '',
-  database: 'nodemysql'
-})
-//conectando de fato no banco de dados
-conn.connect(function(err){
-  if(err){
-    console.log(err)
-  }
 
-  console.log('Conectou ao mySQL')
-
-  app.listen(3333, ()=>{
-    console.log("Server is running in port: ", 3333)
-  })
+app.listen(3333, ()=>{
+  console.log("Server is running in port: ", 3333)
 })
