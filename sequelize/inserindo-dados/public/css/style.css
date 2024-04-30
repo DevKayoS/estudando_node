@@ -52,3 +52,22 @@ form input {
 .bold {
   font-weight: bold;
 }
+
+.form-checkbox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-checkbox input {
+  height: 20px;
+  width: auto;
+}
+
+.form-checkbox label {
+  font-size: medium;
+  width: 100%;
+}
+
+
