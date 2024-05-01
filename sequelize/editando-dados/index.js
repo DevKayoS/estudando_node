@@ -48,6 +48,47 @@ app.get("/users/:id", async(req,res)=>{
   res.render('userview', {user})
 })
 
+//remover dados
+app.post("/users/delete/:id", async(req,res)=>{
+  const id = req.params.id
+
+ await User.destroy({where: {id:id}})
+
+  res.redirect('/')
+})
+
+// pegando o usuário para editar
+app.get('/users/edit/:id', async(req,res)=>{
+  const id =  req.params.id
+  const user  = await User.findOne({raw: true, where: {id:id}})
+
+  res.render('editUser', {user})
+})
+// atualizando no banco de dados
+app.post('/users/edit', async(req,res)=>{
+ const id = req.body.id
+ const name = req.body.name
+ const occupation = req.body.occupation
+ let newsletter = req.body.newsletter
+
+ if(newsletter === 'on'){
+  newsletter = true
+ } else {
+  newsletter = false
+ }
+//  criando um objeto com os dados que eu quero atualizar
+ const userDataUpdated = {
+  id,
+  name,
+  occupation,
+  newsletter
+ }
+
+ await User.update( userDataUpdated, {where: {id: id}})
+
+ res.redirect('/')
+})
+
 //rota home
 app.get('/', async(req, res)=>{
   const users = await User.findAll({raw: true})
