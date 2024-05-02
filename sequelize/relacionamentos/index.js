@@ -90,6 +90,23 @@ app.post('/users/edit', async(req,res)=>{
  res.redirect('/')
 })
 
+app.post('/address/create', async(req,res)=>{
+  const UserId = req.body.UserId
+  const street = req.body.street
+  const number = req.body.number
+  const city = req.body.city
+
+  const address = {
+    UserId,
+    street,
+    number,
+    city
+  }
+  await Address.create(address)
+
+  res.redirect(`/users/edit/${UserId}`)
+})
+
 //rota home
 app.get('/', async(req, res)=>{
   const users = await User.findAll({raw: true})
@@ -100,8 +117,8 @@ app.get('/', async(req, res)=>{
 
 //fazendo a conexão e pode ser usado para criação de tabela
 conn
-// .sync()
-.sync({force: true})
+// .sync({force: true})
+.sync()
 .then(()=>{
   app.listen(3333)
 }).catch((err)=> console.log(err))
