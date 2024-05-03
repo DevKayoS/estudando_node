@@ -100,6 +100,7 @@ app.get('/', async(req, res)=>{
 //fazendo a conexão e pode ser usado para criação de tabela
 conn
 .sync()
+// .sync({force: true}) // forma de refazer a tabela
 .then(()=>{
   app.listen(3333)
 }).catch((err)=> console.log(err))

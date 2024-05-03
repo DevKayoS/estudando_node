@@ -61,9 +61,13 @@ app.post("/users/delete/:id", async(req,res)=>{
 // pegando o usuário para editar
 app.get('/users/edit/:id', async(req,res)=>{
   const id =  req.params.id
-  const user  = await User.findOne({raw: true, where: {id:id}})
+  try {
+    const user  = await User.findOne({include: Address, where: {id:id}})
 
-  res.render('editUser', {user})
+    res.render('editUser', {user: user.get({plain: true})})
+  } catch(error){
+    console.log(error)
+  }
 })
 // atualizando no banco de dados
 app.post('/users/edit', async(req,res)=>{
@@ -117,7 +121,8 @@ app.get('/', async(req, res)=>{
 
 //fazendo a conexão e pode ser usado para criação de tabela
 conn
-.sync({force: true})
+// .sync({force: true})
+.sync()
 .then(()=>{
   app.listen(3333)
 }).catch((err)=> console.log(err))
