@@ -1,0 +1,167 @@
+* {
+  font-family: Helvetica;
+  margin: 0;
+}
+#navbar {
+  border-bottom: 1px solid #ccc;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+#navbar ul{
+  display: flex;
+  list-style: none;
+  gap: 8px;
+  justify-content: end;
+  margin: 0;
+}
+
+#navbar ul li{
+  font-style: none;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+form,
+.books-container{
+  width: 450px;
+  margin: 0 auto;
+  font-size: x-large;
+  display: flex;
+  gap: 10px;
+  flex-direction: column; 
+  
+}
+
+form div label {
+  font-weight: bold;
+}
+
+form input {
+  width: 100%;
+  padding: 5px;
+}
+
+.submit {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.form-checkbox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-checkbox input {
+  height: 20px;
+  width: auto;
+}
+
+.form-checkbox label {
+  font-size: medium;
+  width: 100%;
+}
+
+
+/* Users */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 10px;
+}
+
+.container .item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  flex: 1 1 29%;
+  max-width: 29%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.item h2,
+.item p{
+  margin-bottom: 0.8em;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.actions a,
+.actions input{
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  text-decoration: none;
+  background-color: #fff;
+  padding: 5px;
+  font-size: 15px;
+  color: #000;
+  cursor: pointer;
+}
+
+.actions .details-btn{
+  text-align: center;
+  border-color: #004085;
+  color: #004085;
+}
+
+.actions .delete-btn {
+  max-width: 347px;
+  border-color: #721c24;
+  color: #721c24;
+}
+
+.actions .edit-btn{
+  text-align: center;
+  border-color: green;
+  color: green;
+}
+
+.address-container {
+  max-width: 1000px;
+  margin: 1em auto;
+  padding-top: 1em;
+  border-top: 1px solid #ccc;
+}
+
+.address-container h2 {
+  margin-bottom: 1em;
+}
+
+.address-container form{
+  width: 300px;
+}
+
+.address-list {
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: 1px solid #ccc;
+}
+
+.address-list div {
+  display: flex;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #ddd;
+  align-items: center;
+}
+
+.address-list form {
+  margin-left: 1em;
+}
