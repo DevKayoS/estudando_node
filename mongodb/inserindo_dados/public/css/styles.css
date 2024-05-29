@@ -32,3 +32,55 @@
 #navbar ul li a:hover{
   color: #f6982d;
 } 
+
+.container {
+  padding: 2em;
+}
+
+.container h1 {
+  margin-bottom: 1em;
+
+}
+
+.container form {
+  max-width: 300px;
+}
+
+.form-control label {
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+
+
+.form-control input,
+.form-control textarea {
+  width: 100%;
+  padding: 7px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.form-control textarea{
+  height: 100px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+form div{
+  display: flex;
+  flex-direction: column;
+}
+
+form input[type="submit"]{
+  background-color: #f6982d;
+  color: #FFF;
+  padding: .7em 1.5em;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
