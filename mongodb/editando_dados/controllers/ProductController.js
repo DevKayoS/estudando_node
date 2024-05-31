@@ -46,10 +46,10 @@ module.exports  = class ProductController {
         const image = req.body.image
         const price = req.body.price
         const description =  req.body.description
-        
+        // console.log(id)
         const product = new Product(name, image, price, description)
-
-        await product.updateProduct(id)
+     
+       await product.updateProduct(id)
 
         res.redirect('/products')
       }

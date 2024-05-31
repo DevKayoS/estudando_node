@@ -1,6 +1,7 @@
 const conn = require('../db/conn')
 
-const {ObjectId} = require('mongodb')
+const {ObjectId } = require('mongodb')
+// const ObjectId = new ObjectId()
 
 class Product {
 
@@ -35,9 +36,14 @@ class Product {
     await conn.db().collection('products').deleteOne({_id: new ObjectId(id)})
     return
   }
-   updateProduct(id){
-    conn.db().collection('products').updateOne({_id: new ObjectId(id)}, {$set: this})
-    return
+  async updateProduct(id) {
+    if (!ObjectId.isValid(id)) {
+      throw new Error('Invalid ID format');
+    }
+    await conn.db().collection('products').updateOne(
+      { _id: new ObjectId(id) },
+      { $set: { name: this.name, image: this.image, price: this.price, description: this.description } }
+    );
   }
 }
 
