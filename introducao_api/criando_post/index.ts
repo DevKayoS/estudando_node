@@ -19,6 +19,7 @@ app.post('/createproduct', (req: Request, res: Response)=>{
 
   console.log(name)
   console.log(price)
+  res.json({message: `Produto ${name} salvo com sucesso`})
 })
 app.get('/', (req: Request, res: Response)=>{
   res.json({message: 'Primeira rota criada com sucesso!'})
