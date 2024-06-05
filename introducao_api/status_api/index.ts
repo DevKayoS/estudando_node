@@ -17,12 +17,12 @@ app.post('/createproduct', (req: Request, res: Response)=>{
   const name: string = req.body.name
   const price: number = req.body.price
   if(!name){
-    res.status(422).json({message: "O campo nome é obrigatório"})
+    res.status(422).json({message: "O campo name é obrigatório"})
+    return
   }
 
   console.log(name)
   console.log(price)
-
   res.status(201).json({message: `Produto ${name} salvo com sucesso`})
 })
 app.get('/', (req: Request, res: Response)=>{
